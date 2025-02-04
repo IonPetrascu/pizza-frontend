@@ -3,7 +3,7 @@ import { Nunito_Sans } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { ReactNode } from 'react';
-
+import { Providers } from '@/shared/providers';
 
 const nunitoSans = Nunito_Sans({
   subsets: ['latin', 'cyrillic'],
@@ -21,9 +21,11 @@ export default async function BaseLayout({ children, locale }: Props) {
   return (
     <html className="h-full" lang={locale}>
       <body suppressHydrationWarning={true} >
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
+        <Providers>
+          <NextIntlClientProvider messages={messages}>
+            {children}
+          </NextIntlClientProvider>
+        </Providers>
       </body>
     </html>
   );
