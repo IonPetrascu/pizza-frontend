@@ -5,10 +5,10 @@ import { getMessages } from 'next-intl/server';
 import { ReactNode } from 'react';
 import { Providers } from '@/shared/providers';
 
-const nunitoSans = Nunito_Sans({
+/* const nunitoSans = Nunito_Sans({
   subsets: ['latin', 'cyrillic'],
   weight: ['300', '400', '600', '700'],
-});
+}); */
 
 type Props = {
   children: ReactNode;

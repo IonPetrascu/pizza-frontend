@@ -1,16 +1,15 @@
 import { NextPage } from 'next'
 import { getUsers } from '@/utils/api'
 
-interface Props { }
 
-const Page: NextPage<Props> = async () => {
+const Page: NextPage = async () => {
     const users = await getUsers()
 
     return (
         <div>
             <h1>Success!</h1>
             {users ? (
-                users.map((user) => (
+                users.map((user: any) => (
                     <div key={user.id}>
                         <div>{user.name}</div>
                         <div>{user.email}</div>
