@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Product } from '@/types/products';
-import { ProductCard } from './ProductCard';
+import { ProductCard } from '@/components/shared';
 
 interface Props {
     className?: string;

@@ -2,7 +2,7 @@
 import React from 'react';
 import type { Category } from '@/types/categories';
 import Link from 'next/link';
-import { Button } from '../ui';
+import { Button } from '@/components/ui';
 
 
 interface Props {

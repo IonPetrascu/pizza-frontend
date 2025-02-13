@@ -2,9 +2,9 @@
 import React from 'react';
 import type { Product } from '@/types/products';
 import Link from 'next/link';
-import { Button } from '../ui';
+import { Button } from '@/components/ui';
 import { Plus } from 'lucide-react';
-import { Title } from './title';
+import { Title } from '@/components/shared';
 
 
 interface Props {

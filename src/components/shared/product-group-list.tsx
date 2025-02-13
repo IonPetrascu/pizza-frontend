@@ -1,8 +1,8 @@
 import { cn } from '@/lib/utils';
 import React from 'react';
 import type { Category } from '@/types/categories';
-import { ProductList } from './ProductList';
-import { Separator } from '../ui';
+import { ProductList } from '@/components/shared';
+import { Separator } from '@/components/ui';
 
 interface Props {
     className?: string;

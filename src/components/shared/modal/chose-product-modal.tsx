@@ -4,8 +4,8 @@ import { Dialog, DialogContent, DialogTitle } from '@/components/ui';
 import { cn } from '@/lib/utils';
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { Product } from '@/types/products';
-import { Title } from '../title';
+import type { Product } from '@/types/products';
+import { Title } from '@/components/shared';
 
 
 interface Props {

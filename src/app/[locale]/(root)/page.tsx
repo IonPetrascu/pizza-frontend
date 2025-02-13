@@ -1,7 +1,6 @@
 import { Container } from "@/components/shared";
 import { Api } from "@/services/api-client";
-import { ProductGroupList, TopBar } from "@/components/shared";
-import { Filters } from "@/components/shared/filters";
+import { ProductGroupList, TopBar, Filters } from "@/components/shared";
 
 
 export default async function HomePage({ params }: { params: { locale: string } }) {

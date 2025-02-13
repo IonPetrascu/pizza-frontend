@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
 import { Button, Separator } from '../ui';
 import { CartDrawer } from './cart-drawer';
 import { ShoppingCart } from 'lucide-react';

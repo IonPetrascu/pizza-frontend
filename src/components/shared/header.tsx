@@ -1,8 +1,7 @@
 import React from "react"
 import { cn } from "@/lib/utils"
-import { Container } from "./container"
-import { CartButton } from "./cart-button"
-import { Button, Input } from "../ui"
+import { Container, CartButton } from "@/components/shared"
+import { Button, Input } from "@/components/ui"
 import { User } from "lucide-react"
 
 interface Props {

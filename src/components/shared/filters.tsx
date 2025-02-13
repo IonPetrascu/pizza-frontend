@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import CheckBoxGroup from './CheckBoxGroup';
+import { CheckBoxGroup } from '@/components/shared';
 import { useIngredients, useFilters } from '@/hooks';
 import { cn } from '@/lib/utils';
 import { Title } from './title';

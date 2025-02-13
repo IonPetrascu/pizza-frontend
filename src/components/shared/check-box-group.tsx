@@ -1,4 +1,4 @@
-import { FilterCheckbox } from "./FilterCheckbox";
+import { FilterCheckbox } from "@/components/shared";
 
 type Item = { value: string, text: string }
 
@@ -11,7 +11,7 @@ interface Props {
     name?: string
 }
 
-const CheckBoxGroup: React.FC<Props> = ({ title,
+export const CheckBoxGroup: React.FC<Props> = ({ title,
     items,
     onClickCheckbox,
     selected,
@@ -38,4 +38,3 @@ const CheckBoxGroup: React.FC<Props> = ({ title,
     )
 }
 
-export default CheckBoxGroup

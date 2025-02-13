@@ -2,8 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useSession, signIn } from "next-auth/react";
-import { Title } from "@/components/shared";
-import { Filters } from "@/components/shared/filters";
+import { Filters } from "@/components/shared";
 import { useSearchParams } from "next/navigation";
 
 export function HomeClient({ }: {}) {
