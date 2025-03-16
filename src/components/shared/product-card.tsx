@@ -15,7 +15,7 @@ interface Props {
 
 export const ProductCard: React.FC<Props> = ({ locale, className, item }) => {
     return (
-        <Link className='relative flex flex-col gap-y-2 p-1 h-auto' href={`${locale}/products/${item.id}`}>
+        <Link className='relative flex flex-col gap-y-2 p-1 h-auto' scroll={false} href={`${locale}/products/${item.id}`}>
             <div className='rounded-3xl overflow-hidden'>
                 <img className='object-cover object-center w-full' src="https://www.andys.md/public/product_images/89/2389/d8a3ce33289c10cc8f3bd26f27334754.webp" />
             </div>

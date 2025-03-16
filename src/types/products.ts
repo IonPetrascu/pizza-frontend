@@ -4,7 +4,8 @@ export interface Product {
     id: number;
     name: string;
     imageUrl: string;
-    ingredients: Ingredient[];
+    price: number
+    ingredients?: Ingredient[];
     createdAt: string
     updatedAt: string
 }

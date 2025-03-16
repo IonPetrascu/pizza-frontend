@@ -4,4 +4,6 @@ export interface Ingredient {
     name: string;
     imageUrl: string;
     price: number;
+    createdAt: string
+    updatedAt: string
 }

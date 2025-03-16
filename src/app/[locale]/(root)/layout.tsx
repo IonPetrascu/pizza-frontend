@@ -1,6 +1,7 @@
 import { BaseLayout, Header } from "@/components/shared";
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
     title: 'Pizza | Главная',
@@ -24,6 +25,10 @@ export default async function LocaleLayout({
             </Suspense>
             {children}
             {modal}
+            <Toaster
+                position="top-center"
+                reverseOrder={true}
+            />
         </BaseLayout>);
 }
 

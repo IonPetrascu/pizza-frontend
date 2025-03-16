@@ -5,6 +5,7 @@ import { ReactNode } from 'react';
 import { Providers } from '@/components/shared/providers';
 import { Montserrat } from "next/font/google"
 import '@/app/globals.css';
+import Head from 'next/head';
 
 type Props = {
   children: ReactNode;
@@ -23,9 +24,9 @@ export async function BaseLayout({ children, locale }: Props) {
 
   return (
     <html className="h-full" lang={locale}>
-      <head>
+      <Head>
         <link data-rh="true" rel="icon" href="/logo.svg" />
-      </head>
+      </Head>
       <body suppressHydrationWarning={true} className={`body ${montserrat.variable}`} >
         <Providers>
           <NextIntlClientProvider messages={messages}>
