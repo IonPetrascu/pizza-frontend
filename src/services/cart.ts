@@ -1,12 +1,10 @@
 import { axiosInstance } from './instance';
 import { ApiRoutes } from './constants';
-import { CartDTO } from './dto/cart.dto';
+import type { Cart } from '@/types/cart';
 
 // Получение корзины по userId или token
-export const getCart = async (userId?: number, token?: string): Promise<CartDTO> => {
-  console.log("get cart", userId, token);
-
-  const response = await axiosInstance.get<CartDTO>(ApiRoutes.CART, {
+export const getCart = async (userId?: number, token: string): Promise<Cart> => {
+  const response = await axiosInstance.get<Cart>(ApiRoutes.CART, {
     params: userId ? { userId } : {},
     headers: token ? { 'x-cart-token': token } : {},
   });
@@ -19,8 +17,8 @@ export const updateItemQuantity = async (
   quantity: number,
   userId?: number,
   token?: string
-): Promise<CartDTO> => {
-  const response = await axiosInstance.patch<CartDTO>(
+): Promise<Cart> => {
+  const response = await axiosInstance.patch<Cart>(
     `${ApiRoutes.CART}/${id}`,
     { quantity },
     {
@@ -28,15 +26,17 @@ export const updateItemQuantity = async (
       headers: token ? { 'x-cart-token': token } : {},
     }
   );
+
   return response.data;
 };
 
 // Удаление элемента из корзины
-export const deleteCartItem = async (id: number, userId?: number, token?: string): Promise<CartDTO> => {
-  const response = await axiosInstance.delete<CartDTO>(`${ApiRoutes.CART}/${id}`, {
+export const deleteCartItem = async (id: number, userId?: number, token?: string): Promise<Cart> => {
+  const response = await axiosInstance.delete<Cart>(`${ApiRoutes.CART}/${id}`, {
     params: userId ? { userId } : {},
     headers: token ? { 'x-cart-token': token } : {},
   });
+
   return response.data;
 };
 
@@ -46,8 +46,8 @@ export const addCartItem = async (
   userId?: number,
   ingredients: number[] = [],
   token?: string
-): Promise<{ cart: CartDTO; token: string }> => {
-  const response = await axiosInstance.post<{ cart: CartDTO; token: string }>(
+): Promise<{ cart: Cart, token: string  }> => {
+  const response = await axiosInstance.post<{ cart: Cart; token: string }>(
     ApiRoutes.CART,
     { productId, ingredients },
     {

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React from "react"
 import { cn } from "@/lib/utils"
 import { Container, CartButton } from "@/components/shared"
 import { Input } from "@/components/ui"
@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const Header: React.FC<Props> = ({ className }) => {
-    const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+    const [isOpenModal, setIsOpenModal] = React.useState<boolean>(false);
 
     return <header className={cn('py-5 border-b border-gray-700 ', className)}>
         <Container className="flex items-center gap-5 ">

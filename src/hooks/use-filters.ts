@@ -13,8 +13,6 @@ export const useFilters = () => {
     }
     useEffect(() => {
         const params = new URLSearchParams();
-        console.log(selectedIngredients
-        );
 
         if (selectedIngredients.size) changeParamsUrl(selectedIngredients, 'ingredients', params)
 
