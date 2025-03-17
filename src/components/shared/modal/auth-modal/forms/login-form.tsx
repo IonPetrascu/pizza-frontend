@@ -52,14 +52,13 @@ export const LoginForm: React.FC<Props> = ({ onClose }) => {
             <Title text="Вход в аккаунт" size="md" className="font-bold" />
             <p className="text-gray-400">Введите свою почту, чтобы войти в свой аккаунт</p>
           </div>
-          <img src="/assets/images/phone-icon.png" alt="phone-icon" width={60} height={60} />
         </div>
 
-        <input {...form.register("email")} type="text" required />
+        <input {...form.register("email")} autoComplete="email" type="email" required />
         {form.formState.errors.email && (
           <p className="text-red-500">{form.formState.errors.email.message}</p>
         )}
-        <input {...form.register("password")} type="password" required />
+        <input {...form.register("password")} autoComplete='current-password' type="password" required />
         {form.formState.errors.password && (
           <p className="text-red-500">{form.formState.errors.password.message}</p>
         )}

@@ -1,34 +1,29 @@
 
-import { CartDTO } from "@/services/dto/cart.dto";
+import type { Cart } from "@/types/cart";
 import { calcCartItemTotalPrice } from "./calt-cart-item-total-price";
 
-export type CartStateItem = {
-    id: number
-    quantity: number
-    name: string
-    imageUrl: string
-    price: number
-    ingredients: Array<{ name: string; price: number }>
-}
+// export type CartStateItem = {
+//     id: number
+//     quantity: number
+//     name: string
+//     imageUrl: string
+//     price: number
+//     ingredients: Array<{ name: string; price: number }>
+// }
 
-export interface ReturnProps {
-    items: CartStateItem[]
-    totalAmount: number
-}
+import { CartItemDTO } from "@/services/dto/cart.dto";
 
-export const getCartDetails = (data: CartDTO): ReturnProps => {
+export const getCartDetails = (data: Cart): CartItemDTO[] => {
     const items = data.items.map((item) => ({
         id: item.id,
+        cartId: item.cartId,
+        productId: item.productId,
         quantity: item.quantity,
-        name: item.product.name,
-        imageUrl: item.product.imageUrl,
+        product: item.product,
         price: calcCartItemTotalPrice(item),
-        ingredients: item.ingredients
-    }))
-    console.log("Return",items);
-    
-    return {
-        totalAmount: data.totalAmount,
-        items
-    }
-}
+        ingredients: item.ingredients,
+        createdAt: item.createdAt,
+        updatedAt: item.updatedAt,
+    }));
+    return items;
+};

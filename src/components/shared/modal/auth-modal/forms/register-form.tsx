@@ -66,7 +66,6 @@ export const RegisterForm: React.FC<Props> = ({ onClose }) => {
             <Title text="Регистрация" size="md" className="font-bold" />
             <p className="text-gray-400">Введите данные для создания аккаунта</p>
           </div>
-          <img src="/assets/images/phone-icon.png" alt="phone-icon" width={60} height={60} />
         </div>
 
         <div>
@@ -87,6 +86,7 @@ export const RegisterForm: React.FC<Props> = ({ onClose }) => {
             type="text"
             placeholder="Полное имя"
             required
+            autoComplete='current-password'
           />
           {form.formState.errors.fullName && (
             <p className="text-red-500">{form.formState.errors.fullName.message}</p>
@@ -99,6 +99,7 @@ export const RegisterForm: React.FC<Props> = ({ onClose }) => {
             type="password"
             placeholder="Пароль"
             required
+            autoComplete='username'
           />
           {form.formState.errors.password && (
             <p className="text-red-500">{form.formState.errors.password.message}</p>

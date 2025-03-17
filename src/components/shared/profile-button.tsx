@@ -9,7 +9,6 @@ interface Props {
 
 export const ProfileButton: React.FC<Props> = ({ setOpen }) => {
     const { data: session } = useSession()
-    console.log(session);
 
     return (
         <> {
