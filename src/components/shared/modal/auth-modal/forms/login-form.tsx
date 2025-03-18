@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Title } from '../../../title';
 import toast from 'react-hot-toast';
 import { signIn } from 'next-auth/react';
-import { Button } from '@/components/ui';
+import { Button, Input } from '@/components/ui';
 
 interface Props {
   onClose: () => void;
@@ -47,22 +47,34 @@ export const LoginForm: React.FC<Props> = ({ onClose }) => {
   return (
     <FormProvider {...form}>
       <form className="flex flex-col gap-5" onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="flex justify-between items-center">
-          <div className="mr-2">
-            <Title text="Вход в аккаунт" size="md" className="font-bold" />
-            <p className="text-gray-400">Введите свою почту, чтобы войти в свой аккаунт</p>
-          </div>
+        <div className="text-center">
+          <Title text="Вход в аккаунт" size="md" className="font-bold" />
+          <p className="text-gray-400">Введите свою почту, чтобы войти в свой аккаунт</p>
         </div>
-
-        <input {...form.register("email")} autoComplete="email" type="email" required />
-        {form.formState.errors.email && (
-          <p className="text-red-500">{form.formState.errors.email.message}</p>
-        )}
-        <input {...form.register("password")} autoComplete='current-password' type="password" required />
-        {form.formState.errors.password && (
-          <p className="text-red-500">{form.formState.errors.password.message}</p>
-        )}
-
+        <div>
+          <Input
+            {...form.register("email")}
+            type="email"
+            placeholder="Email"
+            required
+            autoComplete='email'
+          />
+          {form.formState.errors.email && (
+            <p className="text-red-500">{form.formState.errors.email.message}</p>
+          )}
+        </div>
+        <div>
+          <Input
+            {...form.register("password")}
+            type="password"
+            placeholder="Пароль"
+            required
+            autoComplete='current-password'
+          />
+          {form.formState.errors.password && (
+            <p className="text-red-500">{form.formState.errors.password.message}</p>
+          )}
+        </div>
         <Button className="h-12 text-base" type="submit">
           Войти
         </Button>

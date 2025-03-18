@@ -25,7 +25,7 @@ export async function BaseLayout({ children, locale }: Props) {
   return (
     <html className="h-full" lang={locale}>
       <Head>
-        <link data-rh="true" rel="icon" href="/logo.svg" />
+        <link data-rh="true" rel="icon" href="/logos/logo.svg" />
       </Head>
       <body suppressHydrationWarning={true} className={`body ${montserrat.variable}`} >
         <Providers>
