@@ -61,11 +61,10 @@ export const RegisterForm: React.FC<Props> = ({ onClose }) => {
   return (
     <FormProvider {...form}>
       <form className="flex flex-col gap-5" onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="flex justify-between items-center">
-          <div className="mr-2">
-            <Title text="Регистрация" size="md" className="font-bold" />
-            <p className="text-gray-400">Введите данные для создания аккаунта</p>
-          </div>
+        <div className="text-center">
+          <Title text="Регистрация" size="md" className="font-bold" />
+          <p className="text-gray-400">Введите данные для создания аккаунта</p>
+
         </div>
 
         <div>
@@ -86,7 +85,7 @@ export const RegisterForm: React.FC<Props> = ({ onClose }) => {
             type="text"
             placeholder="Полное имя"
             required
-            autoComplete='current-password'
+            autoComplete="family-name"
           />
           {form.formState.errors.fullName && (
             <p className="text-red-500">{form.formState.errors.fullName.message}</p>
@@ -99,7 +98,7 @@ export const RegisterForm: React.FC<Props> = ({ onClose }) => {
             type="password"
             placeholder="Пароль"
             required
-            autoComplete='username'
+            autoComplete='current-password'
           />
           {form.formState.errors.password && (
             <p className="text-red-500">{form.formState.errors.password.message}</p>
@@ -111,6 +110,7 @@ export const RegisterForm: React.FC<Props> = ({ onClose }) => {
             {...form.register("confirmPassword")}
             type="password"
             placeholder="Подтвердите пароль"
+            autoComplete='current-password'
             required
           />
           {form.formState.errors.confirmPassword && (
