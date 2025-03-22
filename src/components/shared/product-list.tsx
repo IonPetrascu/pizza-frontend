@@ -6,7 +6,6 @@ import { ProductCard } from '@/components/shared';
 import { Separator } from '@/components/ui';
 import { useCategoryStore } from '@/store';
 import { useIntersection } from 'react-use';
-
 interface Props {
     className?: string;
     items: Product[]
@@ -17,18 +16,20 @@ interface Props {
 
 export const ProductList: React.FC<Props> = ({ className, categoryId, locale, items, title }) => {
 
-    const setActiveCategoryId = useCategoryStore((state) => state.setActiveId);
+    const { setActiveId } = useCategoryStore()
+
     const intersectionRef = useRef(null);
     //@ts-ignore TODO: add type intersecionRef
     const intersection = useIntersection(intersectionRef, {
-        threshold: 0.4,
+        threshold: 0.5,
     });
 
     useEffect(() => {
         if (intersection?.isIntersecting) {
-            setActiveCategoryId(categoryId);
+            setActiveId(categoryId);
         }
     }, [intersection?.isIntersecting, categoryId]);
+
 
 
     return (
@@ -37,7 +38,7 @@ export const ProductList: React.FC<Props> = ({ className, categoryId, locale, it
                 <h3 className='font-bold text-4xl'>{title}</h3>
                 <Separator className="bg-black flex-1" orientation="horizontal" />
             </div>
-            <div className='grid grid-cols-1 gap-8  md:grid-cols-2 xl:grid-cols-3'>
+            <div className={'grid grid-cols-1 gap-8  md:grid-cols-2 xl:grid-cols-3 transform duration-500'} >
                 {items.map((item, idx) => <ProductCard locale={locale} item={item} key={idx} />)}
             </div>
         </div>)

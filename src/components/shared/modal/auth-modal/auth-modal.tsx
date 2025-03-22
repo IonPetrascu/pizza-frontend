@@ -26,9 +26,9 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose }) => {
     const buttonText = formType === "login" ? "Зарегистрироваться" : "Войти"
     return (
         <Dialog open={isOpen} onOpenChange={handleClose}>
-            <DialogTitle></DialogTitle>
-            <DialogDescription></DialogDescription>
-            <DialogDescription></DialogDescription>
+            <DialogTitle className='hidden'></DialogTitle>
+            <DialogDescription className='hidden'></DialogDescription>
+            <DialogDescription className='hidden'></DialogDescription>
             <DialogContent className="sm:max-w-[425px]">
 
                 <div className='flex flex-col gap-5'>
