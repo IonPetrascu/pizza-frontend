@@ -17,8 +17,8 @@ export const TopBar: React.FC<Props> = ({ categories }) => {
 
     return (
         <Container className='sticky top-0 z-20'>
-            <div className='py-3 bg-white'>
-                <ul className='flex flex-wrap gap-2 w-max rounded-3xl'>
+            <div className='py-3 bg-white overflow-x-auto'>
+                <ul className='flex  gap-2 w-max rounded-3xl'>
                     {categories.map((category) => (
                         <li key={category.id}>
                             <Link href={`#${category.name}`} >

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui';
 import { Plus } from 'lucide-react';
 import { Title } from '@/components/shared';
+import { useTranslations } from 'next-intl';
 
 
 interface Props {
@@ -14,6 +15,7 @@ interface Props {
 }
 
 export const ProductCard: React.FC<Props> = ({ locale, className, item }) => {
+    const t = useTranslations("Product")
     return (
         <Link className='relative flex flex-col gap-y-2 p-1 h-auto' scroll={false} href={`${locale}/products/${item.id}`}>
             <div className='rounded-3xl overflow-hidden'>
@@ -22,9 +24,9 @@ export const ProductCard: React.FC<Props> = ({ locale, className, item }) => {
             <Title text={item.name} />
             <p className='font-light text-sm text-gray-500'>Красный лук, Сочные ананасы, Итальянские травы, Сладкий перец</p>
             <div className='flex items-center justify-between mt-auto'>
-                <span>от 15$</span>
+                <span>{t("from", { count: item.price })}</span>
                 <Button size={"sm"}>
-                    <span>Выбрать</span>
+                    <span>{t("add")}</span>
                     <Plus size={15} />
                 </Button>
             </div>

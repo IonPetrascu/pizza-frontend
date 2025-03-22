@@ -6,6 +6,7 @@ import { Container, CartButton } from "@/components/shared"
 import { Input } from "@/components/ui"
 import { ProfileButton } from "@/components/shared"
 import { AuthModal } from "@/components/shared"
+import { Link } from "@/i18n/routing"
 interface Props {
     className?: string
 }
@@ -15,7 +16,7 @@ export const Header: React.FC<Props> = ({ className }) => {
 
     return <header className={cn('py-5 border-b border-gray-700 ', className)}>
         <Container className="flex items-center gap-5 ">
-            <h1 className="font-extrabold text-5xl">Pizza</h1>
+            <Link href={'/'}><h1 className="font-extrabold text-5xl">Pizza</h1></Link>
             <Input className="" placeholder="Поиск..." />
             <CartButton />
             <ProfileButton setOpen={() => setIsOpenModal(true)} />

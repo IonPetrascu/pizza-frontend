@@ -18,6 +18,7 @@ import { useCartStore } from '@/store';
 import toast from 'react-hot-toast';
 import { useSession } from 'next-auth/react';
 import { cn } from '@/lib';
+import { useTranslations } from 'next-intl';
 
 interface Props {
     className?: string;
@@ -26,6 +27,8 @@ interface Props {
 export const CartDrawer: React.FC<PropsWithChildren<Props>> = ({ children, className }) => {
     const { totalAmount, fetchCart, updateItemQuantity, deleteCartItem, items, token, loading } = useCartStore();
     const { data: session } = useSession();
+    console.log(session);
+    
     useEffect(() => {
         // Извлекаем userId из сессии, если пользователь авторизован
         const userId = session?.user?.id ? Number(session.user.id) : undefined;
@@ -49,14 +52,17 @@ export const CartDrawer: React.FC<PropsWithChildren<Props>> = ({ children, class
         }
     };
 
+    const t = useTranslations("Cart")
+
     return (
         <Sheet>
             <SheetTrigger asChild>{children}</SheetTrigger>
             <SheetContent className="flex flex-col bg-gray-200 p-0 py-4">
                 <SheetHeader className="px-2">
-                    <SheetTitle>В корзине {items.length} товар(ов)</SheetTitle>
+                    <SheetTitle>{t("amount", { count: items.length })}</SheetTitle>
+                    <SheetDescription></SheetDescription>
                 </SheetHeader>
-                <SheetDescription></SheetDescription>
+
                 <div className="flex flex-col overflow-y-auto  gap-y-2 px-2 ">
                     {items.map((item, idx) => (
                         <ProductCart
@@ -64,7 +70,7 @@ export const CartDrawer: React.FC<PropsWithChildren<Props>> = ({ children, class
                             key={idx}
                             onClickDelete={() => onClickDelete(item.id)}
                             onClickCountButton={(type) => onClickCountButton(item.id, item.quantity, type)}
-                            productPrice={item.product.price}
+                            productPrice={item.price}
                             quantity={item.quantity}
                             item={item}
                             ingredients={item.ingredients}
@@ -73,7 +79,7 @@ export const CartDrawer: React.FC<PropsWithChildren<Props>> = ({ children, class
                 </div>
                 <SheetFooter className="mt-auto px-4 flex !flex-col gap-5">
                     <div className="flex items-center justify-between">
-                        <span className="font-bold text-lg">Итого</span>
+                        <span className="font-bold text-lg">{t("total")}</span>
                         <span className="font-bold text-lg">{totalAmount}$</span>
                     </div>
                     <Link href="/checkout">
@@ -82,7 +88,7 @@ export const CartDrawer: React.FC<PropsWithChildren<Props>> = ({ children, class
                             type="submit"
                             className="w-full h-12 text-base"
                         >
-                            Оформить заказ
+                            {t("placeOrder")}
                             <ArrowRight className="w-5 ml-2" />
                         </Button>
                     </Link>

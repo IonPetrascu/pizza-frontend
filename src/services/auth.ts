@@ -2,7 +2,13 @@ import { axiosInstance } from './instance';
 import { ApiRoutes } from './constants';
 
 export const login = async (email: string, password: string): Promise<any> => {
-  return (await axiosInstance.post(ApiRoutes.LOGIN, { email, password })).data;
+  try {
+    const response = await axiosInstance.post(ApiRoutes.LOGIN, { email, password });
+    return response.data; // Токен сохраняется в NextAuth, а не в localStorage
+  } catch (error) {
+    console.error('[AUTH_LOGIN] Error:', error);
+    throw error;
+  }
 };
 
 export const register = async (
@@ -11,5 +17,11 @@ export const register = async (
   password: string,
   cartToken?: string
 ): Promise<any> => {
-  return (await axiosInstance.post(ApiRoutes.REGISTER, { email, fullName, password, cartToken })).data;
+  try {
+    const response = await axiosInstance.post(ApiRoutes.REGISTER, { email, fullName, password, cartToken });
+    return response.data; // Токен сохраняется в NextAuth, а не в localStorage
+  } catch (error) {
+    console.error('[AUTH_REGISTER] Error:', error);
+    throw error;
+  }
 };

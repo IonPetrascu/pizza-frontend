@@ -20,7 +20,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
     return (
         <div className={cn(className, "flex flex-col gap-y-2")}>
             <Title className='font-bold' text={'Фильтрация'} />
-            <CheckBoxGroup title={"Ингредиенты"} loading={loading} name="ingredients" onClickCheckbox={toggleIngredients} selected={selectedIngredients} items={items} />
+            <CheckBoxGroup title={"Ингредиенты"} loading={loading} name="Ingredients" onClickCheckbox={toggleIngredients} selected={selectedIngredients} items={items} />
         </div>
     );
 };

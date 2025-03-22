@@ -1,5 +1,38 @@
 {
     "HomePage": {
-        "title": "Salut!"
+        "title": "Salut !"
+    },
+    "Ingredients": {
+        "title": "{count, plural, =0 {Zero Ingrediente} one {Ingredient:} other {Ingrediente:}}",
+        "1": "Margine cu brânză",
+        "2": "Mozzarella cremoasă",
+        "3": "Brânzeturi cheddar și parmezan",
+        "4": "Ardei iute jalapeño",
+        "5": "Pui fraged",
+        "6": "Ciuperci champignon",
+        "7": "Șuncă",
+        "8": "Pepperoni picant",
+        "9": "Chorizo picant",
+        "10": "Castraveți marinați",
+        "11": "Roșii proaspete",
+        "12": "Ceapă roșie",
+        "13": "Ananas suculent",
+        "14": "Ierburi italiene",
+        "15": "Ardei dulce",
+        "16": "Cuburi de brânză feta",
+        "17": "Chifteluțe"
+    },
+    "Header": {
+        "profileBtn": "Profil {userName}",
+        "logIn": "Logare"
+    },
+    "Cart": {
+        "amount": "În coș {count, plural, =0 {nu sunt produse} one {este {count} produs} other {sunt {count} produse}}",
+        "total": "Total:",
+        "placeOrder": "Plasează comanda"
+    },
+    "Product": {
+        "from": "de la  {count}$",
+        "add": "Adaugă"
     }
 }

@@ -30,7 +30,7 @@ export const authOptions = {
                             name: user.name,
                             email: user.email,
                             role: user.role,
-                            token: user.token, // Добавляем токен
+                            token: user.token, // Токен от бэкенда
                         };
                     }
                     throw new Error("Invalid response from server");
@@ -46,7 +46,7 @@ export const authOptions = {
             if (user) {
                 token.id = user.id;
                 token.role = user.role;
-                token.token = user.token; // Сохраняем токен в JWT
+                token.token = user.token; // Передаем токен в JWT
             }
             return token;
         },

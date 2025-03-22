@@ -6,7 +6,7 @@ import { CountButton } from '@/components/shared';
 import { cn } from '@/lib';
 import { Button } from '../ui';
 import { CartItemDTO } from '@/services/dto/cart.dto';
-
+import { useTranslations } from 'next-intl';
 
 
 interface Props {
@@ -20,16 +20,16 @@ interface Props {
 }
 
 export const ProductCart: React.FC<Props> = ({ className, item, productPrice, quantity, ingredients, onClickCountButton, onClickDelete }) => {
+    const t = useTranslations("Ingredients")
+
     return (<div className={cn('flex gap-4 p-2', className)} >
         <img className='w-[60px] h-[60px]' src="https://next-pizza-dun-two.vercel.app/assets/images/pizza3.webp" alt="pizza" />
         <div className='flex flex-col w-full gap-5'>
             <div>
                 <h2 className='font-semibold text-xl'>{item.product.name}</h2>
-
                 {
-
                     ingredients.length > 0 && (<>
-                        <h4 className='font-light text-sm font-semibold'>Ingredients:</h4>
+                        <h4 className='text-sm font-semibold'>{t("title", { count: ingredients.length })}</h4>
                         <ul>
                             {ingredients.map((ingredient, idx) => {
                                 return (
@@ -38,7 +38,6 @@ export const ProductCart: React.FC<Props> = ({ className, item, productPrice, qu
                             })}
                         </ul>
                     </>
-
                     )
                 }
             </div>
