@@ -1,11 +1,8 @@
 "use client"
 import React, { useState } from 'react';
 import { Button, Dialog, DialogContent, DialogTitle, DialogDescription, Separator } from '@/components/ui';
-import { signIn } from 'next-auth/react';
 import { LoginForm } from './forms/login-form';
 import { RegisterForm } from './forms/register-form';
-import Image from 'next/image';
-
 interface Props {
     isOpen: boolean
     onClose: () => void
@@ -39,12 +36,12 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose }) => {
                         <span>{text}</span>
                         <Button className='p-0 bg-white hover:bg-white text-black block h-max text-base font-semibold' onClick={switchFormType}>{buttonText}</Button>
                     </div>
-                    <div className='flex items-center gap-2'>
+                    {/* <div className='flex items-center gap-2'>
                         <Separator className='w-1/4 bg-black' />
                         <span className='flex items-center justify-center rounded-full w-2/4 text-center'>Или войдите с помощью</span>
                         <Separator className='w-1/4 bg-black' />
-                    </div>
-                    <div className='flex gap-5'>
+                    </div> */}
+                    {/* <div className='flex gap-5'>
                         <Button onClick={() => signIn("github", {
                             callbackUrl: "/",
                             redirect: true
@@ -59,7 +56,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose }) => {
                             <Image src="/logos/github-logo.svg" width={24} height={24} alt="github-logo" />
                             <span>Google</span>
                         </Button>
-                    </div>
+                    </div> */}
                 </div>
             </DialogContent>
         </Dialog>
