@@ -1,38 +1,42 @@
 {
-    "HomePage": {
-        "title": "Hello world!"
-    },
-    "Ingredients": {
-        "title": "{count, plural, =0 {No Ingredients} one {Ingredient:} other {{count} Ingredients:}}",
-        "1": "Cheesy crust",
-        "2": "Creamy mozzarella",
-        "3": "Cheddar and parmesan cheeses",
-        "4": "Spicy jalapeño pepper",
-        "5": "Tender chicken",
-        "6": "Champignon mushrooms",
-        "7": "Ham",
-        "8": "Spicy pepperoni",
-        "9": "Spicy chorizo",
-        "10": "Pickled cucumbers",
-        "11": "Fresh tomatoes",
-        "12": "Red onion",
-        "13": "Juicy pineapple",
-        "14": "Italian herbs",
-        "15": "Sweet pepper",
-        "16": "Feta cheese cubes",
-        "17": "Meatballs"
-    },
-    "Header": {
-        "profileBtn": "Profile {userName}",
-        "logIn": "Log in"
-    },
-    "Cart": {
-        "amount": "In cart {count, plural, =0 {there are no items} one {there is {count} item} other {there are {count} items}}",
-        "total": "Total:",
-        "placeOrder": "Place order"
-    },
-    "Product": {
-        "from": "from {count}$",
-        "add":"Add"
+  "HomePage": {
+    "title": "Hello world!"
+  },
+  "Ingredients": {
+    "title": "{count, plural, =0 {No Ingredients} one {Ingredient:} other {{count} Ingredients:}}",
+    "1": "Cheesy crust",
+    "2": "Creamy mozzarella",
+    "3": "Cheddar and parmesan cheeses",
+    "4": "Spicy jalapeño pepper",
+    "5": "Tender chicken",
+    "6": "Champignon mushrooms",
+    "7": "Ham",
+    "8": "Spicy pepperoni",
+    "9": "Spicy chorizo",
+    "10": "Pickled cucumbers",
+    "11": "Fresh tomatoes",
+    "12": "Red onion",
+    "13": "Juicy pineapple",
+    "14": "Italian herbs",
+    "15": "Sweet pepper",
+    "16": "Feta cheese cubes",
+    "17": "Meatballs"
+  },
+  "Header": {
+    "profileBtn": "Profile {userName}",
+    "logIn": "Log in",
+    "searchInput": {
+      "placeholder": "Search...",
+      "emptyList": "No products 😟"
     }
+  },
+  "Cart": {
+    "amount": "In cart {count, plural, =0 {there are no items} one {there is {count} item} other {there are {count} items}}",
+    "total": "Total:",
+    "placeOrder": "Place order"
+  },
+  "Product": {
+    "from": "from {count}$",
+    "add": "Add"
+  }
 }

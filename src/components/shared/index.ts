@@ -18,4 +18,5 @@ export { CountIconButton } from './count-icon-button'
 export { ProductCardSkeleton } from './product-card-skeleton'
 export { ProductCart } from './product-cart'
 export { ProfileButton } from './profile-button'
+export { SearchInput } from "./search-input";
 export * from './modal'
