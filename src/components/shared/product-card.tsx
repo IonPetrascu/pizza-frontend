@@ -5,6 +5,7 @@ import { Button } from "@/components/ui";
 import { Plus } from "lucide-react";
 import { Title } from "@/components/shared";
 import { useTranslations } from "next-intl";
+import { cn } from "@/lib";
 
 interface Props {
   className?: string;
@@ -16,7 +17,7 @@ export const ProductCard: React.FC<Props> = ({ className, item }) => {
   const t = useTranslations("Product");
   return (
     <Link
-      className="relative flex flex-col gap-y-2 p-1 h-auto"
+      className={cn("relative flex flex-col gap-y-2 p-1 h-auto", className)}
       scroll={false}
       href={{
         pathname: "/products/[id]",
@@ -25,6 +26,7 @@ export const ProductCard: React.FC<Props> = ({ className, item }) => {
     >
       <div className="rounded-3xl overflow-hidden">
         <img
+          alt=""
           className="object-cover object-center w-full"
           src={item.imageUrl}
         />

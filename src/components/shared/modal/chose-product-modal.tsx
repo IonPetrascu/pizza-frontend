@@ -13,7 +13,7 @@ import toast from "react-hot-toast";
 import { LoaderCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useToastMessage } from "@/hooks";
-
+import Image from "next/image";
 interface Props {
   product: Product;
   className?: string;
@@ -61,10 +61,12 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
         <DialogDescription className="hidden" />
         <div className="flex gap-5">
           <div className="w-1/2 rounded-3xl overflow-clip h-full p-2">
-            <img
-              className="object-cover object-center w-full rounded-2xl"
+              <Image
               src={product.imageUrl}
-              alt="pizza mario"
+              alt={product.name}
+              width={500}
+              height={500}
+              className="object-cover rounded-2xl"
             />
           </div>
           <div className="w-1/2 p-2 flex flex-col ">

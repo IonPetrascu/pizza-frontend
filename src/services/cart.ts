@@ -1,12 +1,15 @@
-import { axiosInstance } from './instance';
-import { ApiRoutes } from './constants';
-import type { Cart } from '@/types/cart';
+import { axiosInstance } from "./instance";
+import { ApiRoutes } from "./constants";
+import type { Cart } from "@/types/cart";
 
 // Получение корзины по userId или token
-export const getCart = async (userId?: number, token: string): Promise<Cart> => {
+export const getCart = async (
+  userId?: number,
+  token?: string | null
+): Promise<Cart> => {
   const response = await axiosInstance.get<Cart>(ApiRoutes.CART, {
     params: userId ? { userId } : {},
-    headers: token ? { 'x-cart-token': token } : {},
+    headers: token ? { "x-cart-token": token } : {},
   });
   return response.data;
 };
@@ -23,7 +26,7 @@ export const updateItemQuantity = async (
     { quantity },
     {
       params: userId ? { userId } : {},
-      headers: token ? { 'x-cart-token': token } : {},
+      headers: token ? { "x-cart-token": token } : {},
     }
   );
 
@@ -31,10 +34,14 @@ export const updateItemQuantity = async (
 };
 
 // Удаление элемента из корзины
-export const deleteCartItem = async (id: number, userId?: number, token?: string): Promise<Cart> => {
+export const deleteCartItem = async (
+  id: number,
+  userId?: number,
+  token?: string | null
+): Promise<Cart> => {
   const response = await axiosInstance.delete<Cart>(`${ApiRoutes.CART}/${id}`, {
     params: userId ? { userId } : {},
-    headers: token ? { 'x-cart-token': token } : {},
+    headers: token ? { "x-cart-token": token } : {},
   });
 
   return response.data;
@@ -45,14 +52,17 @@ export const addCartItem = async (
   productId: number,
   userId?: number,
   ingredients: number[] = [],
-  token?: string
-): Promise<{ cart: Cart, token: string  }> => {
-  const response = await axiosInstance.post<{ cart: Cart; token: string }>(
+  token?: string | null
+): Promise<{ cart: Cart; token?: string | null }> => {
+  const response = await axiosInstance.post<{
+    cart: Cart;
+    token?: string | null;
+  }>(
     ApiRoutes.CART,
     { productId, ingredients },
     {
       params: userId ? { userId } : {},
-      headers: token ? { 'x-cart-token': token } : {},
+      headers: token ? { "x-cart-token": token } : {},
     }
   );
   return response.data;

@@ -30,7 +30,7 @@ export const CheckBoxGroup: React.FC<Props> = ({ title,
     return (
         <div className="max-h-[500px]">
             {items.map((item, index) => {
-
+              <h4>{title}</h4>
                 // const translationKey = `${name}.${item}` as any;
                 return (
                     <FilterCheckbox

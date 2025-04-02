@@ -32,8 +32,7 @@ export const useCartStore = create<CartState>((set) => ({
                 totalAmount: data.cart.totalAmount,
                 token: data.token,
             });
-
-            localStorage.setItem('cartToken', data.token);
+            if (data.token) localStorage.setItem("cartToken", data.token);
         } catch (error) {
             console.error('[addCartItem] Error:', error);
             set({ error: true });
