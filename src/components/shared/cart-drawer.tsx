@@ -11,7 +11,7 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "../ui";
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { ProductCart } from '@/components/shared';
 import { ArrowRight } from 'lucide-react';
 import { useCartStore } from '@/store';
@@ -28,7 +28,7 @@ export const CartDrawer: React.FC<PropsWithChildren<Props>> = ({ children, class
     const { totalAmount, fetchCart, updateItemQuantity, deleteCartItem, items, token, loading } = useCartStore();
     const { data: session } = useSession();
     console.log(session);
-    
+
     useEffect(() => {
         // Извлекаем userId из сессии, если пользователь авторизован
         const userId = session?.user?.id ? Number(session.user.id) : undefined;

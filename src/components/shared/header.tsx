@@ -9,10 +9,9 @@ import { Link } from "@/i18n/routing";
 
 interface Props {
   className?: string;
-  locale: string;
 }
 
-export const Header: React.FC<Props> = ({ className, locale }) => {
+export const Header: React.FC<Props> = ({ className }) => {
   const [isOpenModal, setIsOpenModal] = React.useState<boolean>(false);
 
   return (
@@ -21,7 +20,7 @@ export const Header: React.FC<Props> = ({ className, locale }) => {
         <Link href={"/"}>
           <h1 className="font-extrabold text-5xl">Pizza</h1>
         </Link>
-        <SearchInput locale={locale} />
+        <SearchInput />
         <div className="flex gap-5">
           <CartButton />
           <ProfileButton setOpen={() => setIsOpenModal(true)} />

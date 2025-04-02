@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import { Product } from "@/types/products";
 import { LoaderCircle, Search } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import React, { FC, useEffect, useRef, useState } from "react";
 import { useClickAway, useDebounce } from "react-use";
 import { Button } from "@/components/ui/button";
@@ -13,11 +13,10 @@ import { Api } from "@/services/api-client";
 import { useTranslations } from "next-intl";
 
 interface Props {
-  locale: string;
   className?: string;
 }
 
-export const SearchInput: FC<Props> = ({ locale, className }) => {
+export const SearchInput: FC<Props> = ({className }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [focused, setFocused] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
@@ -100,7 +99,10 @@ export const SearchInput: FC<Props> = ({ locale, className }) => {
               <li key={product.id}>
                 <Link
                   scroll={false}
-                  href={`/${locale}/products/${product.id}`}
+                  href={{
+                    pathname: "/products/[id]",
+                    params: { id: product.id },
+                  }}
                   onClick={onClickItem}
                   className="flex items-center gap-3 w-full px-3 py-2 hover:bg-primary/10 rounded-lg  "
                 >
@@ -191,7 +193,10 @@ export const SearchInput: FC<Props> = ({ locale, className }) => {
                     <Link
                       onClick={onClickItem}
                       scroll={false}
-                      href={`/${locale}/products/${product.id}`}
+                      href={{
+                        pathname: "/products/[id]",
+                        params: { id: product.id },
+                      }}
                       className="flex items-center gap-3 w-full px-3 py-2 hover:bg-primary/10 rounded-lg  "
                     >
                       {product.imageUrl && (
