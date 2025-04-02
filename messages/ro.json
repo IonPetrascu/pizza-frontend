@@ -38,5 +38,21 @@
   "Product": {
     "from": "de la  {count}$",
     "add": "Adaugă"
+  },
+  "Toast": {
+    "products": {
+      "add": {
+        "success": "{productName} a fost adăugat în coș!",
+        "error": "Nu am putut adăuga {productName} în coș."
+      },
+      "delete": {
+        "success": "{productName} a fost eliminat din coș!",
+        "error": "Nu am putut elimina {productName} din coș."
+      },
+      "update": {
+        "success": "{productName} a fost actualizat în coș!",
+        "error": "Nu am putut actualiza {productName} în coș."
+      }
+    }
   }
 }

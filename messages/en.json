@@ -38,5 +38,21 @@
   "Product": {
     "from": "from {count}$",
     "add": "Add"
+  },
+  "Toast": {
+    "products": {
+      "add": {
+        "success": "Added {productName} to your cart!",
+        "error": "Failed to add {productName} to cart."
+      },
+      "delete": {
+        "success": "Removed {productName} from your cart!",
+        "error": "Couldn’t remove {productName} from cart."
+      },
+      "update": {
+        "success": "Updated {productName} in your cart!",
+        "error": "Failed to update {productName} in cart."
+      }
+    }
   }
 }
