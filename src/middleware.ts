@@ -7,6 +7,7 @@
 //     // Match only internationalized pathnames
 //     matcher: ['/', '/(ro|en)/:path*']
 // };
+
 import createMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
 import { NextRequest, NextResponse } from "next/server";
@@ -16,19 +17,21 @@ const intlMiddleware = createMiddleware(routing);
 export async function middleware(req: NextRequest) {
   const res = intlMiddleware(req);
 
-  // Определяем локаль из URL
-  const localeMatch = req.nextUrl.pathname.match(/^\/(en|ro)(\/.*)?/);
-  const locale = localeMatch ? localeMatch[1] : null;
-  const pathname = localeMatch ? localeMatch[2] || "/" : req.nextUrl.pathname;
+  // Проверяем текущий путь
+  const { pathname } = req.nextUrl;
+  const localeMatch = pathname.match(/^\/(en|ro)(\/.*)?/);
+  const currentLocale = localeMatch ? localeMatch[1] : null;
 
-  // Добавьте кастомную обработку редиректов
-  if (!locale) {
-    return NextResponse.redirect(new URL(`/en${pathname}`, req.url));
+  // Если локаль уже указана, редирект не требуется
+  if (currentLocale && routing.locales.includes(currentLocale as "en" | "ro")) {
+    console.log("Локаль уже указана:", currentLocale);
+    return res;
   }
 
-  return res;
+  // Перенаправление на defaultLocale (en), если локаль отсутствует
+  return NextResponse.redirect(new URL(`/en${pathname}`, req.url));
 }
 
 export const config = {
-  matcher: ["/", "/(en|ro)/:path*", "/((?!api|_next|_vercel|.*\\..*).*)"],
+  matcher: ["/", "/(ro|en)/:path*"],
 };
