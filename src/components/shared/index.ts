@@ -19,4 +19,5 @@ export { ProductCardSkeleton } from './product-card-skeleton'
 export { ProductCart } from './product-cart'
 export { ProfileButton } from './profile-button'
 export { SearchInput } from "./search-input";
+export { CarouselBanner } from "./CarouselBanner";
 export * from './modal'
