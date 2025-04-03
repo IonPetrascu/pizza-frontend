@@ -15,7 +15,7 @@ export const Header: React.FC<Props> = ({ className }) => {
   const [isOpenModal, setIsOpenModal] = React.useState<boolean>(false);
 
   return (
-    <header className={cn("py-5 border-b border-gray-700 ", className)}>
+    <header className={cn("py-5", className)}>
       <Container className="flex items-center gap-5 justify-between">
         <Link href={"/"}>
           <h1 className="font-extrabold text-5xl">Pizza</h1>
