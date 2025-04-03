@@ -8,30 +8,35 @@
 //     matcher: ['/', '/(ro|en)/:path*']
 // };
 
-import createMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
 import { NextRequest, NextResponse } from "next/server";
 
-const intlMiddleware = createMiddleware(routing);
-
 export async function middleware(req: NextRequest) {
-  const res = intlMiddleware(req);
-
-  // Проверяем текущий путь
   const { pathname } = req.nextUrl;
+
+  // Определяем, есть ли уже локаль в пути (en или ro)
   const localeMatch = pathname.match(/^\/(en|ro)(\/.*)?/);
   const currentLocale = localeMatch ? localeMatch[1] : null;
 
-  // Если локаль уже указана, редирект не требуется
+  console.log("Текущий путь:", pathname);
+  console.log("Обнаруженная локаль:", currentLocale);
+
+  // Если локаль указана и это поддерживаемая локаль, пропускаем запрос
   if (currentLocale && routing.locales.includes(currentLocale as "en" | "ro")) {
-    console.log("Локаль уже указана:", currentLocale);
-    return res;
+    return NextResponse.next();
   }
 
-  // Перенаправление на defaultLocale (en), если локаль отсутствует
-  return NextResponse.redirect(new URL(`/en${pathname}`, req.url));
+  // Если локали нет, перенаправляем на defaultLocale (en) с сохранением пути
+  if (!currentLocale) {
+    console.log("Перенаправление на defaultLocale: en");
+    return NextResponse.redirect(new URL(`/en${pathname}`, req.url));
+  }
+
+  // Если путь не соответствует ожидаемому, возвращаем 404
+  console.log("Несоответствующий путь:", pathname);
+  return NextResponse.redirect(new URL("/en", req.url));
 }
 
 export const config = {
-  matcher: ["/", "/(ro|en)/:path*"],
+  matcher: ["/", "/(en|ro)/:path*"],
 };
