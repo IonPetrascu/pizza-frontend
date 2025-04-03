@@ -13,7 +13,7 @@ export default function RootPage() {
   if (typeof window !== "undefined" && window.location.pathname === "/") {
     redirect("/en"); // Выполняем редирект только с корня
   } else {
-    console.log(window.location);
+    console.log('aaaa');
   }
 
   // Альтернативно можно ничего не возвращать для предотвращения дальнейшего рендера
